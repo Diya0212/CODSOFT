@@ -4,11 +4,11 @@ The Java program will take the marks of all the subjects as input and display th
 <pre>
  %             GRADE
 
-90-100  -----    A1
+90-100           A1
 
-81-90   -----    A2
+81-90            A2
 
-71-80   -----    B1
+71-80            B1
 
 61-70            B2
 
