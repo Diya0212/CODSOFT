@@ -1,59 +1,42 @@
 import java.util.*;
-public class Task_1 {
+public class Task1{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int n = (int)Math.floor(Math.random()*100);
-        System.out.println(n);
-        
-        System.out.print("No. of guesses u need to find the correct number : ");
-        int guess = sc.nextInt();
-        System.out.print("Enter your guess for the generated number : ");
-        int num = sc.nextInt();
-        while(guess>0){
-            if(num>n){
-                System.out.println("\tTry a smaller number");
-            }
-            else if(num<n){
-                System.out.println("\tTry a larger number");
+        System.out.println("Welcome!!");
+        int max = 10;
+        int score = 100;
+    
+        while (true) {
+            int n = (int)Math.floor(Math.random()*100);
+            int guesses = 0;
+            while(guesses<max){
+                System.out.print("Enter your guess: ");
+                int num = sc.nextInt();
+                sc.nextLine();
+                guesses++;
+                if (num == n) {
+                    System.out.println("Congratulations! You guessed the correct number in " + guesses + " attempts.");
+                    score = score - (guesses*10);
+                    break;
+                } else if (num < n) {
+                    System.out.println("Too low. Try again.");
+                } else {
+                    System.out.println("Too high. Try again.");
+                }
 
+                if (guesses == max) {
+                    System.out.println("You've reached the maximum number of attempts. The correct number was " + n);
+                }
             }
-            else{
-                System.out.println("Congratulations,YOU WON!!!!");
+
+            System.out.print("Do you want to play again? (yes/no): ");
+            String str = sc.nextLine();
+         
+            if (!str.equals("yes")) {
+                System.out.println("Your total score is: " + score);
                 break;
             }
-            if(guess>1){
-                num = sc.nextInt();
-                guess--;
-            }
-        
-            if(guess==1){
-                if(num==n){
-                    System.out.println("Congratulations,YOU WON!!!!");
-                    break;
-                }
-                else{
-                System.out.println("Sorry , YOU LOST");
-                System.out.println("Correct number was :"+ n);
-                }
-                System.out.println("Would you like to play again ? Enter Yes to play again " );
-                String ch = sc.next();
-
-                if(ch.charAt(0)=='Y'||ch.charAt(0)=='y' ){
-                    n = (int)Math.floor(Math.random()*100);
-                    System.out.print("No. of guesses u need to find the correct number : ");
-                    guess = sc.nextInt();
-                    
-                    System.out.print("Enter your guess for the generated number : ");
-                    num = sc.nextInt();
-                
-                }
-            
-                else{
-                    break;
-                }
-            }
-
-            }            
-        }   
-
-    }
+        }
+     
+}
+}
